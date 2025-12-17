@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Adoption and Animal Rescue Portal - Manage Records</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for paw icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="crud-container">
+
+        <header>
+            <h1><i class="fas fa-paw"></i> Animal Records</h1>
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="crud.html" class="active">Manage Records</a></li>
+                    <li><a href="logout.html">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="form-section">
+            
+            <form id="crudForm">
+                <label>Item Name:</label>
+                <input type="text" id="itemName" placeholder="Enter item name" required>
+
+                <label>Description:</label>
+                <input type="text" id="itemDesc" placeholder="Enter description" required>
+
+                <button type="submit" class="btn">Add Record</button>
+            </form>
+        </section>
+
+        <section class="table-section">
+            <h2>Existing Records</h2>
+            <table id="recordTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Item Name</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Loki</td>
+                        <td>Male,4 month</td>
+                        <td>
+                            <button class="edit-btn">Edit</button>
+                            <button class="delete-btn">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Kiki</td>
+                        <td>Female, 2 years</td>
+                        <td>
+                            <button class="edit-btn">Edit</button>
+                            <button class="delete-btn">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </div>
+
+    <script>
+        // Add new record dynamically
+        document.getElementById("crudForm").addEventListener("submit", function(e){
+            e.preventDefault();
+
+            var name = document.getElementById("itemName").value;
+            var desc = document.getElementById("itemDesc").value;
+
+            if(name && desc){
+                var table = document.getElementById("recordTable").getElementsByTagName('tbody')[0];
+                var rowCount = table.rows.length + 1;
+
+                var row = table.insertRow();
+                row.innerHTML = `
+                    <td>${rowCount}</td>
+                    <td>${name}</td>
+                    <td>${desc}</td>
+                    <td>
+                        <button class="edit-btn">Edit</button>
+                        <button class="delete-btn">Delete</button>
+                    </td>
+                `;
+
+                document.getElementById("itemName").value = "";
+                document.getElementById("itemDesc").value = "";
+
+                alert("Record added successfully!");
+            }
+        });
+    </script>
+
+</body>
+</html>

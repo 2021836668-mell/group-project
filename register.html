@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for paw icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f0f8ff; /* light background */
+        }
+
+        .register-container {
+            max-width: 400px;
+            margin: 60px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .register-container h1 {
+            color: #1abc9c;
+            margin-bottom: 20px;
+        }
+
+        .register-container i {
+            color: #1abc9c;
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .register-container form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .register-container label {
+            text-align: left;
+            margin: 10px 0 5px 0;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .register-container input {
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            margin-bottom: 15px;
+        }
+
+        .register-container button {
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background-color: #1abc9c;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .register-container button:hover {
+            background-color: #16a085;
+        }
+
+        .register-container p {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .register-container p a {
+            color: #1abc9c;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .register-container p a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="register-container">
+        <i class="fas fa-paw"></i>
+        <h1>Pet Adoption & Rescue Register</h1>
+        <form id="registrationForm">
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" placeholder="Enter your full name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
+
+            <label for="username">Username</label>
+            <input type="text" id="username" placeholder="Enter your username" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter your password" required minlength="6">
+
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" placeholder="Confirm your password" required minlength="6">
+
+            <button type="submit">Registration</button>
+        </form>
+        <p>Already have an account? <a href="login.html">Login here</a></p>
+    </div>
+
+    <script>
+    document.getElementById("registrationForm").addEventListener("submit", function(event){
+        event.preventDefault();
+
+        var password = document.getElementById("password").value;
+        var confirmPassword = document.getElementById("confirmPassword").value;
+
+        if(password !== confirmPassword){
+            alert("Passwords do not match!");
+            return;
+        }
+
+        alert("Registration Successful!");
+        window.location.href = "login.html"; // Redirect to login
+    });
+    </script>
+
+</body>
+</html>
